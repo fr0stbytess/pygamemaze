@@ -29,7 +29,6 @@ class Client:
 
     def load_data(self):
         """This method loads all the external data to the game Client"""
-        self.game_folder = path.dirname(__file__)
         self.map_data = []
         with open("controller/map.txt", "rt") as f:
             for line in f:
