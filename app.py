@@ -2,7 +2,6 @@
    handle all the client processing"""
 
 import sys
-from os import path
 
 import pygame as pg
 
