@@ -14,7 +14,7 @@ light_grey = (100, 100, 100)
 green = (0, 255, 0)
 red = (255, 0, 0)
 yellow = (255, 255, 0)
-sand_color = (166, 155, 121)
+sand_color = (232, 196, 97)
 
 # Game client constants
 tile_size = 32
