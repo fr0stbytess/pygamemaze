@@ -37,10 +37,10 @@ class Client:
     def new_game(self):
         """This method will initialize all the variables and
            start a new game"""
-
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.water = pg.sprite.Group()
+        self.guardian = pg.sprite.Group()
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == "1":
@@ -49,10 +49,11 @@ class Client:
                     self.player = sprites.Player(self, col, row)
                 if tile == "W":
                     sprites.Water(self, col, row)
+                if tile == "G":
+                    sprites.Guardian(self, col, row)
 
     def run_client(self):
         """As the method name says itself, it will run the game client"""
-
         self.running = True
         while self.running:
             self.delta = self.clock.tick(self.fps) / 1000
@@ -91,7 +92,6 @@ class Client:
     def events(self):
         """This method will catch all the events and perform
            specific actions"""
-
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.log_actions()
