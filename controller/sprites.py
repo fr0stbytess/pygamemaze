@@ -36,6 +36,14 @@ class Player(pg.sprite.Sprite):
         for wall in self.game.walls:
             if wall.x == self.x + dx and wall.y == self.y + dy:
                 return True
+        for water in self.game.water:
+            if water.x == self.x + dx and water.y == self.y + dy:
+                print("You died. Avoid water next time!")
+                exit()
+        for guardian in self.game.guardian:
+            if guardian.x == self.x + dx and guardian.y == self.y + dy:
+                print("You won!")
+                exit()
         return False
 
 
@@ -59,7 +67,7 @@ class Wall(pg.sprite.Sprite):
 
 class Water(pg.sprite.Sprite):
     def __init__(self, game, x, y):
-        self.groups = game.all_sprites, game.walls
+        self.groups = game.all_sprites, game.water
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.water = pg.image.load(
@@ -75,7 +83,7 @@ class Water(pg.sprite.Sprite):
 
 class Guardian(pg.sprite.Sprite):
     def __init__(self, game, x, y):
-        self.groups = game.all_sprites, game.walls
+        self.groups = game.all_sprites, game.guardian
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.guardian = pg.image.load(
