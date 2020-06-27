@@ -31,6 +31,8 @@ class Player(pg.sprite.Sprite):
         self.rect.y = self.y * settings.tile_size
 
     def track_collisions(self, dx=0, dy=0):
+        """This method will track movements and detect collisions
+           between Player and Walls classes"""
         for wall in self.game.walls:
             if wall.x == self.x + dx and wall.y == self.y + dy:
                 return True
@@ -62,8 +64,24 @@ class Water(pg.sprite.Sprite):
         self.game = game
         self.water = pg.image.load(
             "controller/images/water.png").convert_alpha()
-        self.water = pg.transform.scale(self.water, (32, 35))
+        self.water = pg.transform.scale(self.water, (32, 32))
         self.image = pg.Surface.convert_alpha(self.water)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
+        self.rect.x = x * settings.tile_size
+        self.rect.y = y * settings.tile_size
+
+
+class Guardian(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.walls
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.guardian = pg.image.load(
+            "controller/images/guardian.png").convert_alpha()
+        self.guardian = pg.transform.scale(self.guardian, (32, 32))
+        self.image = pg.Surface.convert_alpha(self.guardian)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
