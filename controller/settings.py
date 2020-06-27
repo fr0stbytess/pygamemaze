@@ -5,7 +5,7 @@ height = 768  # 16 * 48 or 32 * 24 or 64 * 12
 fps = 60
 app_title = "MacGyver Escape"
 app_version = "0.1.0"
-background_color = (166, 155, 121)
+background_color = (237, 207, 107)
 
 # Color constants
 white = (255, 255, 255)
@@ -14,7 +14,7 @@ light_grey = (100, 100, 100)
 green = (0, 255, 0)
 red = (255, 0, 0)
 yellow = (255, 255, 0)
-sand_color = (232, 196, 97)
+sand_color = (237, 207, 107)
 
 # Game client constants
 tile_size = 32
