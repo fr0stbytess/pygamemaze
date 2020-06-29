@@ -95,3 +95,33 @@ class Guardian(pg.sprite.Sprite):
         self.y = y
         self.rect.x = x * settings.tile_size
         self.rect.y = y * settings.tile_size
+
+
+class Key(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.key
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.x = x
+        self.y = y
+        self.key = pg.image.load("controller/images/key.png").convert_alpha()
+        self.key = pg.transform.scale(self.key, (32, 32))
+        self.image = pg.Surface.convert_alpha(self.key)
+        self.rect = self.image.get_rect()
+        self.rect.x = x * settings.tile_size
+        self.rect.y = y * settings.tile_size
+
+
+class Door(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.door
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.x = x
+        self.y = y
+        self.door = pg.image.load("controller/images/door.jpg").convert_alpha()
+        self.door = pg.transform.scale(self.door, (32, 32))
+        self.image = pg.Surface.convert_alpha(self.door)
+        self.rect = self.image.get_rect()
+        self.rect.x = x * settings.tile_size
+        self.rect.y = y * settings.tile_size
