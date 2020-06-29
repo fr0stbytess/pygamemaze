@@ -40,6 +40,8 @@ class Client:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.water = pg.sprite.Group()
+        self.key = pg.sprite.Group()
+        self.door = pg.sprite.Group()
         self.guardian = pg.sprite.Group()
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -51,6 +53,10 @@ class Client:
                     sprites.Water(self, col, row)
                 if tile == "G":
                     sprites.Guardian(self, col, row)
+                if tile == "K":
+                    sprites.Key(self, col, row)
+                if tile == "D":
+                    sprites.Door(self, col, row)
 
     def run_client(self):
         """As the method name says itself, it will run the game client"""
@@ -75,11 +81,12 @@ class Client:
         self.all_sprites.update()
 
     def draw_grid(self):
+        """Self-descriptible. Draws the grids on the map"""
         for x in range(0, settings.width, settings.tile_size):
-            pg.draw.line(self.screen, settings.sand_color,
+            pg.draw.line(self.screen, settings.ground_color,
                          (x, 0), (x, settings.height))
         for y in range(0, settings.height, settings.tile_size):
-            pg.draw.line(self.screen, settings.sand_color,
+            pg.draw.line(self.screen, settings.ground_color,
                          (0, y), (settings.width, y))
 
     def draw(self):
