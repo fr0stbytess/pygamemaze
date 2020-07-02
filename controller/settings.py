@@ -4,7 +4,7 @@ width = 1024  # 16 * 64 or 32 * 32 or 64 * 16
 height = 768  # 16 * 48 or 32 * 24 or 64 * 12
 fps = 60
 app_title = "MacGyver Escape"
-app_version = "0.1.3"
+app_version = "0.1.5"
 background_color = (155, 118, 83)
 
 # Color constants
