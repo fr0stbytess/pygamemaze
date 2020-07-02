@@ -18,6 +18,7 @@ class Player(pg.sprite.Sprite):
         self.character = pg.transform.scale(self.character, (32, 32))
         self.image = pg.Surface.convert_alpha(self.character)
         self.rect = self.character.get_rect()
+        self.keys = 0
         self.x = x
         self.y = y
 
@@ -29,6 +30,11 @@ class Player(pg.sprite.Sprite):
     def update(self):
         self.rect.x = self.x * settings.tile_size
         self.rect.y = self.y * settings.tile_size
+        if pg.sprite.spritecollide(self, self.game.key, True):
+            self.game.key.remove()
+        if self.keys == 2:
+            if pg.sprite.spritecollide(self, self.game.door, True):
+                self.game.door.remove()
 
     def track_collisions(self, dx=0, dy=0):
         """This method will track movements and detect collisions
@@ -44,6 +50,18 @@ class Player(pg.sprite.Sprite):
             if guardian.x == self.x + dx and guardian.y == self.y + dy:
                 print("You won!")
                 exit()
+        for key in self.game.key:
+            if key.x == self.x + dx and key.y == self.y + dy:
+                print("Key picked up")
+                self.keys += 1
+        for door in self.game.door:
+            if door.x == self.x + dx and door.y == self.y + dy:
+                if self.keys == 0:
+                    return True
+                elif self.keys == 2:
+                    return False
+                else:
+                    return True
         return False
 
 
