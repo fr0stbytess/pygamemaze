@@ -81,7 +81,7 @@ class Client:
         self.all_sprites.update()
 
     def draw_grid(self):
-        """Self-descriptible. Draws the grids on the map"""
+        """Self-descriptive. Draws the grids on the map"""
         for x in range(0, settings.width, settings.tile_size):
             pg.draw.line(self.screen, settings.ground_color,
                          (x, 0), (x, settings.height))
@@ -118,8 +118,9 @@ class Client:
                     self.player.move(dy=+1)
 
 
-client = Client()
-preload = preload.Preload()
-while True:
-    client.new_game()
-    client.run_client()
+if __name__ == '__main__':
+    client = Client()
+    preload = preload.Preload()
+    while True:
+        client.new_game()
+        client.run_client()
