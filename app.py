@@ -40,6 +40,7 @@ class Client:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.water = pg.sprite.Group()
+        # self.grass = pg.sprite.Group()
         self.key = pg.sprite.Group()
         self.door = pg.sprite.Group()
         self.guardian = pg.sprite.Group()
@@ -49,9 +50,11 @@ class Client:
                     sprites.Wall(self, col, row)
                 if tile == "X":
                     self.player = sprites.Player(self, col, row)
+                #if tile == "G":
+                    #sprites.Grass(self, col, row)
                 if tile == "W":
                     sprites.Water(self, col, row)
-                if tile == "G":
+                if tile == "F":
                     sprites.Guardian(self, col, row)
                 if tile == "K":
                     sprites.Key(self, col, row)
@@ -90,8 +93,8 @@ class Client:
                          (0, y), (settings.width, y))
 
     def draw(self):
-        #  self.screen.fill(settings.background_color)
-        self.screen.fill(settings.background_color)
+        temp_background_image = pg.image.load("controller/images/background.jpg")
+        self.screen.blit(temp_background_image, temp_background_image.get_rect())
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
