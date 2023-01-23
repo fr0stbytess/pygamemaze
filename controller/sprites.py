@@ -83,6 +83,21 @@ class Wall(pg.sprite.Sprite):
         self.rect.y = y * settings.tile_size
 
 
+""" class Grass(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.grass
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        #self.grass = pg.image.load("controller/images/grass.png").convert_alpha()
+        # self.grass = pg.transform.scale(self.grass, (32, 32))
+        self.image = pg.Surface.convert_alpha(self.grass)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
+        self.rect.x = x * settings.tile_size
+        self.rect.y = y * settings.tile_size """
+
+
 class Water(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.water
